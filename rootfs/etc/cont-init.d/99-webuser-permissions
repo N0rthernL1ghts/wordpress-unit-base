@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv sh
+set -e
+
+/usr/local/bin/attr /var/www true www-data:www-data 0770 2771
