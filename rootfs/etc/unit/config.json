@@ -32,6 +32,10 @@
             "type": "php",
             "user": "www-data",
             "group": "www-data",
+            "processes": {
+                "max": 10,
+                "spare": 3
+            },
             "targets": {
                 "direct": {
                     "root": "/var/www/html/"
