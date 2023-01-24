@@ -58,9 +58,11 @@ RUN set -eux \
        		gd \
        		intl \
        		mysqli \
+                opcache \
        		zip \
-    && pecl install imagick-3.6.0 \
-    && docker-php-ext-enable imagick \
+    && docker-php-ext-configure opcache --enable-opcache \
+    && pecl install apcu imagick-3.6.0 \
+    && docker-php-ext-enable apcu imagick \
     && rm -r /tmp/pear \
     && extDir="$(php -i | grep "^extension_dir" | awk -F'=>' '{print $2}' | xargs)" \
     && runDeps="$( \
