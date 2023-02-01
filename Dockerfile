@@ -79,7 +79,7 @@ RUN set -eux \
 
 COPY --from=rootfs ["/", "/"]
 
-RUN echo "*/1 * * * * /usr/local/bin/wp cron event run --due-now" >> /etc/crontabs/www-data
+RUN echo "* * * * * /usr/local/bin/wp cron event run --due-now" >> /etc/crontabs/www-data
 
 ENV S6_KEEP_ENV=1
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
