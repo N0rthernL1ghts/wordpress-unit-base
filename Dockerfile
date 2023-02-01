@@ -58,7 +58,7 @@ RUN set -eux \
        		gd \
        		intl \
        		mysqli \
-                opcache \
+            opcache \
        		zip \
     && docker-php-ext-configure opcache --enable-opcache \
     && pecl install apcu imagick-3.6.0 \
@@ -78,7 +78,8 @@ RUN set -eux \
     && mkdir -p /var/www/html/wp-content/themes \
     && mkdir -p /var/www/html/wp-content/plugins \
     && mkdir -p /var/www/html/wp-content/uploads \
-    && chown -R www-data:www-data /var/www/html/wp-content
+    && chown -R www-data:www-data /var/www/html/wp-content \
+    && rm -rf /usr/src/php /tmp/pear
 
 COPY --from=rootfs ["/", "/"]
 
