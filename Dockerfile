@@ -74,7 +74,10 @@ RUN set -eux \
     && apk add --no-network --virtual .wordpress-phpexts-rundeps ${runDeps} \
     && apk del --no-network .build-deps \
     && php --version || exit 1 \
-    && mkdir -p /var/www/html/wp-content/{languages,themes,plugins,uploads} \
+    && mkdir -p /var/www/html/wp-content/languages \
+    && mkdir -p /var/www/html/wp-content/themes \
+    && mkdir -p /var/www/html/wp-content/plugins \
+    && mkdir -p /var/www/html/wp-content/uploads \
     && chown -R www-data:www-data /var/www/html/wp-content
 
 COPY --from=rootfs ["/", "/"]
