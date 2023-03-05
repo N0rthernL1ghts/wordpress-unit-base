@@ -71,7 +71,7 @@ RUN set -eux \
        			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
     )" \
     && apk add --no-network --virtual .wordpress-phpexts-rundeps ${runDeps} \
-    && apk del --no-network .build-deps \
+    && apk del --no-network .wp-build-deps \
     && php --version || exit 1 \
     && mkdir -p /var/www/html/wp-content/languages \
     && mkdir -p /var/www/html/wp-content/themes \
