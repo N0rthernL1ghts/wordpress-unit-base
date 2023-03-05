@@ -79,7 +79,7 @@ RUN set -eux \
     && mkdir -p /var/www/html/wp-content/plugins \
     && mkdir -p /var/www/html/wp-content/uploads \
     && chown -R www-data:www-data /var/www/html/wp-content \
-    && rm -rf /usr/src/php /tmp/pear
+    && rm -rf /usr/src/php /var/cache/apk/* /tmp/*
 
 COPY --from=rootfs ["/", "/"]
 
