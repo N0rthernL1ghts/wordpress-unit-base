@@ -52,6 +52,7 @@ RUN set -eux \
        		--with-freetype \
        		--with-jpeg \
        		--with-webp \
+    && docker-php-ext-configure opcache --enable-opcache \
     && docker-php-ext-install -j "$(nproc)" \
        		bcmath \
        		exif \
@@ -60,7 +61,6 @@ RUN set -eux \
        		mysqli \
             opcache \
        		zip \
-    && docker-php-ext-configure opcache --enable-opcache \
     && pecl install apcu imagick-3.6.0 \
     && docker-php-ext-enable apcu imagick \
     && extDir="$(php -i | grep "^extension_dir" | awk -F'=>' '{print $2}' | xargs)" \
