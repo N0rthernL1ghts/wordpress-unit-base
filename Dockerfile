@@ -39,7 +39,7 @@ FROM --platform=${TARGETPLATFORM} nlss/unit-php:${UNIT_VERSION}-PHP${PHP_VERSION
 
 RUN set -eux \
     && apk add --update --no-cache bash tzdata imagemagick ghostscript \
-    && apk add --no-cache --virtual .build-deps \
+    && apk add --no-cache --virtual .wp-build-deps \
        		${PHPIZE_DEPS:?} \
        		freetype-dev \
        		icu-dev \
@@ -63,7 +63,6 @@ RUN set -eux \
     && docker-php-ext-configure opcache --enable-opcache \
     && pecl install apcu imagick-3.6.0 \
     && docker-php-ext-enable apcu imagick \
-    && rm -r /tmp/pear \
     && extDir="$(php -i | grep "^extension_dir" | awk -F'=>' '{print $2}' | xargs)" \
     && runDeps="$( \
        		scanelf --needed --nobanner --format '%n#p' --recursive "${extDir}" \
