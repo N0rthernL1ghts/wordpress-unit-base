@@ -38,7 +38,7 @@ ARG UNIT_VERSION
 FROM --platform=${TARGETPLATFORM} nlss/unit-php:${UNIT_VERSION}-PHP${PHP_VERSION}
 
 RUN set -eux \
-    && apk add --update --no-cache bash less mysql-client tzdata imagemagick ghostscript \
+    && apk add --update --no-cache bash tzdata imagemagick ghostscript \
     && apk add --no-cache --virtual .build-deps \
        		${PHPIZE_DEPS:?} \
        		freetype-dev \
