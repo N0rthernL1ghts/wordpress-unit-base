@@ -20,7 +20,7 @@ FROM scratch AS rootfs
 COPY --from=nlss/attr ["/usr/local/bin/attr", "/usr/local/bin/"]
 
 # Add crond service
-COPY --from=nlss/base-alpine:3.17 ["/etc/services.d/cron/", "/etc/services.d/cron/"]
+COPY --from=ghcr.io/n0rthernl1ghts/base-alpine:3.17 ["/etc/services.d/cron/", "/etc/services.d/cron/"]
 
 # WordPress specific php configuration
 COPY --from=wordpress ["/usr/local/etc/php/conf.d/opcache-recommended.ini", "/usr/local/etc/php/conf.d/error-logging.ini", "/usr/local/etc/php/conf.d/"]
@@ -35,7 +35,7 @@ COPY ["./rootfs/", "/"]
 ################################################
 ARG PHP_VERSION
 ARG UNIT_VERSION
-FROM --platform=${TARGETPLATFORM} nlss/unit-php:${UNIT_VERSION}-PHP${PHP_VERSION}
+FROM --platform=${TARGETPLATFORM} ghcr.io/n0rthernl1ghts/unit-php:${UNIT_VERSION}-PHP${PHP_VERSION}
 
 RUN set -eux \
     && apk add --update --no-cache bash tzdata imagemagick ghostscript \
