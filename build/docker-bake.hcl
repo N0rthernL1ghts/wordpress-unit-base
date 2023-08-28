@@ -1,5 +1,5 @@
 group "default" {
-  targets = ["1_0_0"]
+  targets = ["1_0_0", "1_0_0_PHP7_4"]
 }
 
 target "build-dockerfile" {
@@ -67,6 +67,15 @@ function "get-tags" {
 ##########################
 # Define the build targets
 ##########################
+
+
+target "1_0_0_PHP7_4" {
+  inherits   = ["build-dockerfile", "build-platforms", "build-common"]
+  cache-from = get-cache-from("1.0.0-PHP7.4")
+  cache-to   = get-cache-to("1.0.0-PHP7.4")
+  tags       = get-tags("1.0.0-PHP7.4", ["PHP7.4", "1-PHP7.4", "1.0-PHP7.4", "latest-PHP7.4"])
+  args       = get-args("6.1.1", "7.4")
+}
 
 target "1_0_0" {
   inherits   = ["build-dockerfile", "build-platforms", "build-common"]
