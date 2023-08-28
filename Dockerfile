@@ -91,6 +91,10 @@ ENV CRON_ENABLED=true
 ARG WP_IMG_BASE_VERSION
 ENV WP_IMG_BASE_VERSION=${WP_IMG_BASE_VERSION}
 
-LABEL maintainer="Aleksandar Puharic <aleksandar@puharic.com>"
+LABEL maintainer="Aleksandar Puharic <aleksandar@puharic.com>" \
+      org.opencontainers.image.source="https://github.com/N0rthernL1ghts/wordpress-unit-base" \
+      org.opencontainers.image.description="NGINX Unit Powered WordPress Base ${WP_IMG_BASE_VERSION} for n0rthernl1ghts/wordpress - Build ${TARGETPLATFORM}" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.version="${WP_IMG_BASE_VERSION}"
 ENTRYPOINT ["/init"]
 EXPOSE 80/TCP
