@@ -1,5 +1,5 @@
 group "default" {
-  targets = ["1_0_0", "1_0_0_PHP7_4", "1_1_0", "1_1_0_PHP7_4"]
+  targets = ["1_0_0", "1_0_0_PHP7_4", "1_1_0", "1_1_0_PHP7_4", "2_0_0", "2_1_0"]
 }
 
 target "build-dockerfile" {
@@ -91,7 +91,7 @@ target "1_1_0" {
   inherits   = ["build-dockerfile", "build-platforms", "build-common"]
   cache-from = get-cache-from("1.1.0")
   cache-to   = get-cache-to("1.1.0")
-  tags       = get-tags("1.1.0", ["1.1", "latest"])
+  tags       = get-tags("1.1.0", ["1.1", "1"])
   args       = get-args("6.1.1", "8.1", "1.30.0")
 }
 
@@ -101,4 +101,20 @@ target "1_1_0_PHP7_4" {
   cache-to   = get-cache-to("1.1.0-PHP7.4")
   tags       = get-tags("1.1.0-PHP7.4", ["PHP7.4", "1.1-PHP7.4", "latest-PHP7.4"])
   args       = get-args("6.1.1", "7.4", "1.30.0")
+}
+
+target "2_0_0" {
+  inherits   = ["build-dockerfile", "build-platforms", "build-common"]
+  cache-from = get-cache-from("2.0.0")
+  cache-to   = get-cache-to("2.0.0")
+  tags       = get-tags("2.0.0", ["2.0"])
+  args       = get-args("6.1.1", "8.1", "1.31.1")
+}
+
+target "2_1_0" {
+  inherits   = ["build-dockerfile", "build-platforms", "build-common"]
+  cache-from = get-cache-from("2.1.0")
+  cache-to   = get-cache-to("2.1.0")
+  tags       = get-tags("2.1.0", ["latest", "2.1", "2"])
+  args       = get-args("6.1.1", "8.1", "1.32.1")
 }
