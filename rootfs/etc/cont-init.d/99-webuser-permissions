@@ -1,5 +1,10 @@
 #!/usr/bin/with-contenv sh
 set -e
 
-/usr/local/bin/attr /var/www true www-data:www-data 0770 2771
-/usr/local/bin/attr /var/www/html/wp-content true www-data:www-data 2755 2755
+main() {
+    /usr/local/bin/attr /var/www true www-data:www-data 0770 2771
+    /usr/local/bin/attr /var/www/html/wp-content true www-data:www-data 2755 2755
+}
+
+main &
+
