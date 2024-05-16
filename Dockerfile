@@ -19,9 +19,6 @@ FROM scratch AS rootfs
 # Install attr utility
 COPY --from=nlss/attr ["/usr/local/bin/attr", "/usr/local/bin/"]
 
-# Add crond service
-COPY --from=ghcr.io/n0rthernl1ghts/base-alpine:3.17 ["/etc/services.d/cron/", "/etc/services.d/cron/"]
-
 # WordPress specific php configuration
 COPY --from=wordpress ["/usr/local/etc/php/conf.d/opcache-recommended.ini", "/usr/local/etc/php/conf.d/error-logging.ini", "/usr/local/etc/php/conf.d/"]
 
