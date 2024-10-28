@@ -32,7 +32,7 @@ COPY ["./rootfs/", "/"]
 ################################################
 ARG PHP_VERSION
 ARG UNIT_VERSION
-FROM --platform=${TARGETPLATFORM} ghcr.io/n0rthernl1ghts/unit-php:${UNIT_VERSION}-PHP${PHP_VERSION}
+FROM ghcr.io/n0rthernl1ghts/unit-php:${UNIT_VERSION}-PHP${PHP_VERSION}
 
 RUN set -eux \
     && apk add --update --no-cache bash tzdata imagemagick ghostscript \
