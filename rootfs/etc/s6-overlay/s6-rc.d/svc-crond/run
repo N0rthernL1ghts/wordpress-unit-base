@@ -1,10 +1,10 @@
 #!/command/with-contenv bash
 # shellcheck shell=bash
 
-# crond main
+# svc-crond main
 main() {
     # This will prepend service name to all output from here
-    exec > >(while read line; do echo "[crond] ${line}"; done) 2>&1
+    exec > >(while read line; do echo "[svc-crond] ${line}"; done) 2>&1
 
     if [[ "${CRON_ENABLED}" == "false" || "${CRON_ENABLED}" == "0" ]]
     then
@@ -13,6 +13,6 @@ main() {
     fi
 
     echo "Starting cron daemon"
-    /usr/sbin/crond -f -l 2
+    s6-envdir /run/secrets_normalized /usr/sbin/crond -f -l 2
 }
 main
