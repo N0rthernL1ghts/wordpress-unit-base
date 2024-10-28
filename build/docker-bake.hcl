@@ -15,7 +15,7 @@ target "build-common" {
 }
 
 variable "REGISTRY_CACHE" {
-  default = "docker.io/nlss/wordpress-unit-base-cache"
+  default = "ghcr.io/n0rthernl1ghts/wordpress-unit-base-cache"
 }
 
 ######################
@@ -55,12 +55,10 @@ function "get-tags" {
   params = [version, extra_versions]
   result = concat(
     [
-      "docker.io/nlss/wordpress-unit-base:${version}",
       "ghcr.io/n0rthernl1ghts/wordpress-unit-base:${version}"
     ],
     flatten([
       for extra_version in extra_versions : [
-        "docker.io/nlss/wordpress-unit-base:${extra_version}",
         "ghcr.io/n0rthernl1ghts/wordpress-unit-base:${extra_version}"
       ]
     ])
