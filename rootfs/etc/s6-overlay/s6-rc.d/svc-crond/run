@@ -13,6 +13,6 @@ main() {
     fi
 
     echo "Starting cron daemon"
-    s6-envdir /run/secrets_normalized /usr/sbin/crond -f -l 2
+    /usr/sbin/crond -f -l 2
 }
 main
