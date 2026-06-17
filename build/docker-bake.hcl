@@ -1,5 +1,5 @@
 group "default" {
-  targets = ["1_0_0", "1_0_0_PHP7_4", "1_1_0", "1_1_0_PHP7_4", "2_0_0", "2_1_0"]
+  targets = ["1_0_0", "1_0_0_PHP7_4", "1_1_0", "1_1_0_PHP7_4", "2_0_0", "2_1_0", "3_0_0"]
 }
 
 target "build-dockerfile" {
@@ -113,6 +113,14 @@ target "2_1_0" {
   inherits   = ["build-dockerfile", "build-platforms", "build-common"]
   cache-from = get-cache-from("2.1.0")
   cache-to   = get-cache-to("2.1.0")
-  tags       = get-tags("2.1.0", ["latest", "2.1", "2"])
+  tags       = get-tags("2.1.0", ["2.1", "2"])
   args       = get-args("6.1.1", "8.1", "1.32.1")
+}
+
+target "3_0_0" {
+  inherits   = ["build-dockerfile", "build-platforms", "build-common"]
+  cache-from = get-cache-from("3.0.0")
+  cache-to   = get-cache-to("3.0.0")
+  tags       = get-tags("3.0.0", ["latest", "3.0", "3"])
+  args       = get-args("6.9,4", "8.2", "1.34.2")
 }
