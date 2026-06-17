@@ -122,5 +122,5 @@ target "3_0_0" {
   cache-from = get-cache-from("3.0.0")
   cache-to   = get-cache-to("3.0.0")
   tags       = get-tags("3.0.0", ["latest", "3.0", "3"])
-  args       = get-args("6.9,4", "8.2", "1.34.2")
+  args       = get-args("6.9.4", "8.2", "1.34.2")
 }
